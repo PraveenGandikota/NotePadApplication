@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 export const noteContext = createContext(null);
+
 export default function ContextProvider(props) {
     const [notes, setNotes] = useState([]);
 
@@ -39,9 +40,10 @@ export default function ContextProvider(props) {
     };
 
     const val = { notes, addNote, deleteNote, updateNote };
+
     return (
         <noteContext.Provider value={val}>
             {props.children}
         </noteContext.Provider>
     );
-} 
+}
