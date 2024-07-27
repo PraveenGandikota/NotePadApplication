@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+
 export const noteContext = createContext(null);
 
 export default function ContextProvider(props) {
@@ -11,7 +12,7 @@ export default function ContextProvider(props) {
 
     useEffect(() => {
         if (notes.length) {
-            saveToLocal();
+            saveToLocal(notes);  // Pass notes to saveToLocal
         }
     }, [notes]);
 
@@ -31,7 +32,7 @@ export default function ContextProvider(props) {
         );
     };
 
-    const saveToLocal = () => {
+    const saveToLocal = (notes) => {
         localStorage.setItem("notes", JSON.stringify(notes));
     };
 
